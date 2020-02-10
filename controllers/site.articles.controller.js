@@ -3,9 +3,9 @@ const { getArticles } = require('../models/articles.model');
 exports.articles = async (req, res, next) => {
     try {    
         const [rows, fields] = await getArticles();       
-        res.json({ rows })
+        res.json(rows)
     } catch (error) {
         console.log(error);
-        res.send("Noget gik galt");
+        res.status(500);
     }
 }
