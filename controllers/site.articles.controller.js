@@ -1,4 +1,4 @@
-const { getArticles, createArticle } = require('../models/articles.model');
+const { getArticles, createArticle, updateArticle } = require('../models/articles.model');
 
 exports.articles = async (req, res, next) => {
     try {    
@@ -11,16 +11,29 @@ exports.articles = async (req, res, next) => {
 }
 
 exports.createAnArticle = async function(req, res, next) {
-    console.log(req.fields);
     try {       
         const article = await createArticle({
             title: req.fields.title, 
             content: req.fields.content
         });
-        res.end();
+        res.send("Blog indlæg oprettet");
 
     } catch (error) {
         console.log(error);
         res.send("Kan ikke oprette Blog indlæg");
+    }
+}
+
+exports.editArticle = async function(req, res, next) {
+    try {
+        const news = await updateArticle({
+            id: req.params.id, 
+            title: req.fields.title, 
+            content: req.fields.content
+        });
+        res.send("Blog indlæg opdateret");
+    } catch (error) {
+        console.log(error);
+        res.send("Kan ikke opdatere nyhed");
     }
 }
