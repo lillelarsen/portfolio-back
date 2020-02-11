@@ -1,4 +1,9 @@
-const { getArticles, createArticle, updateArticle } = require('../models/articles.model');
+const { 
+    getArticles, 
+    createArticle, 
+    updateArticle, 
+    deleteArticle 
+} = require('../models/articles.model');
 
 exports.articles = async (req, res, next) => {
     try {    
@@ -35,5 +40,15 @@ exports.editArticle = async function(req, res, next) {
     } catch (error) {
         console.log(error);
         res.send("Kan ikke opdatere nyhed");
+    }
+}
+
+exports.deleteAnArticle = async function(req, res, next) {
+    try {
+        const [deleted] = await deleteArticle(req.params.id);
+        res.send("Blog indlæg slettet");
+    } catch (error) {
+        console.log(error);
+        res.send("Kan ikke slette Blog indlæg");
     }
 }
