@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
-// CONFIG
+// CONFIG 
 require('./config/parser')(app);
 
 // ROUTES
