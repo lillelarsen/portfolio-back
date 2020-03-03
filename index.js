@@ -5,7 +5,7 @@ const cors = require('cors')
 
 // CONFIG
 app.use(cors({
-  origin: 'https://portfolio-af45a.web.app/',
+  origin: 'https://portfolio-af45a.web.app',
   methods: ['GET']
 }));
 
