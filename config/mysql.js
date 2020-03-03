@@ -25,4 +25,16 @@ if(environment === 'development') {
             namedPlaceholders: true
         });
     })();
+} else if(environment === 'deployed') {
+    module.exports = (function(){
+        return createPool({
+            host: process.env.DB_HOST_DEPLOY,
+            user: process.env.DB_USER_DEPLOY,
+            password: process.env.DB_PASSWORD_DEPLOY,
+            database: process.env.DB_DATABASE_DEPLOY,
+            connectionLimit: 10,
+            port: process.env.DB_PORT,
+            namedPlaceholders: true
+        });
+    })();
 }
