@@ -6,7 +6,7 @@ const app = express();
 const cors = require('cors')
 
 const corsOptions = {
-  origin: 'https://portfolio-af45a.web.app'
+  origin: 'https://portfolio-af45a.web.app/*'
 }
 
 cors(corsOptions)
